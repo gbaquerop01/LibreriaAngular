@@ -1,0 +1,34 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+  <app-barra-cierre></app-barra-cierre>
+  <div class="container__temas">
+    <div class="card__tema" *ngFor="let tema of temas">
+      <span class="tema__name">
+        {{ tema.nombre }}
+      </span>
+      <div>
+        <button
+          pButton
+          style="background-color: red"
+          icon="pi pi-times"
+          class="btn__recurso"
+          (click)="deleteTema(tema)"></button>
+        <button
+          pButton
+          style="background-color: yellow"
+          icon="pi pi-pencil"
+          class="btn__recurso"></button>
+      </div>
+    </div>
+    <div class="card__tema">
+      <div class="añadir__tema">
+        <input type="text" placeholder="Introducir un nuevo tema!" class="input__añadir__tema" [(ngModel)]="nuevoTema">
+        <button
+          pButton
+          style="background-color: green"
+          icon="pi pi-plus"
+          class="btn__recurso"
+          (click)="saveTema()"></button>
+      </div>
+    </div>
+  </div>
+</div>

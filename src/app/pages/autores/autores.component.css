@@ -1,0 +1,55 @@
+.card__autor{
+  display: flex;
+  justify-content: space-between;
+  margin: 0.4rem;
+  padding: 1rem;
+  width: auto;
+  height: 20%;
+  background-color: lightblue;
+  border-radius: 10px;
+}
+
+.container__autores {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 75vh;
+  background-color: white;
+  border-end-end-radius: 4px;
+  border-end-start-radius: 4px;
+  overflow-y: auto;
+  max-height: 75vh;
+}
+
+.autor__name {
+  font-weight: bold;
+}
+
+.btn__recurso{
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.añadir__autor {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+  height: 20%;
+  background-color: lightblue;
+  border-radius: 10px;
+}
+
+.input__añadir__autor {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}

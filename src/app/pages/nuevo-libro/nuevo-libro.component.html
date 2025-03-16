@@ -1,0 +1,188 @@
+<div class="animate__animated animate__fadeIn
+animate__faster">
+  <app-barra-cierre></app-barra-cierre>
+  <div class="container">
+    <!-- Form -->
+    <div class="container__form">
+      <form [formGroup]="libroFormulario">
+
+        <!-- Inputs group -->
+        <div class="input__group">
+          <div class="group__a">
+            <!-- INPUT NAME -->
+            <div>
+              <div class="p_input_group">
+                <span class="p-inputgroupaddon"><i class="pi pi-book"></i></span>
+                <input
+                  type="text"
+                  pInputText
+                  placeholder="Nombre"
+                  formControlName="nombre"
+                />
+              </div>
+              <div
+                *ngIf="isValidField('nombre')">
+                <p style="color: rgb(255, 0,
+0)">Campo requerido</p>
+              </div>
+            </div>
+            <!-- INPUT ISBN-->
+            <div>
+              <div class="p_input_group">
+<span class="p-inputgroupaddon"
+><i class="pi pi-tags"></i
+></span>
+
+                <input
+                  type="text"
+                  pInputText
+                  class="ng-invalid ng-dirty"
+                  placeholder="ISBN"
+                  formControlName="isbn"
+                />
+              </div>
+              <div
+                *ngIf="isValidField('isbn')">
+                <p style="color: red">Campo
+                  requerido</p>
+                <p style="color: red">Tamaño
+                  minimo 13</p>
+              </div>
+            </div>
+            <!-- INPUT PRECIO-->
+            <div>
+              <div class="p_input_group">
+                <span class="p-inputgroupaddon"><i class="pi pi-euro"></i></span>
+                <input
+                  type="number"
+                  pInputText
+                  placeholder="Precio"
+                  formControlName="precio"
+                  min="0"
+                />
+              </div>
+              <div
+                *ngIf="isValidField('precio')">
+                <p style="color: red">Campo
+                  requerido</p>
+              </div>
+            </div>
+            <!-- INPUT Cantidad-->
+            <div>
+              <div class="p_input_group">
+                <span class="p-inputgroupaddon"><i class="pi pi-save"></i></span>
+                <input
+                  type="number"
+                  pInputText
+                  placeholder="Cantidad"
+                  formControlName="cantidad"
+                  min="0"
+                />
+              </div>
+              <div
+                *ngIf="isValidField('cantidad')">
+                <p style="color: red">Campo
+                  requerido</p>
+              </div>
+            </div>
+          </div>
+          <div class="group__a">
+            <!-- INPUT AUTOR -->
+            <div>
+              <p-dropdown
+                [options]="autores"
+                formControlName="autor"
+                placeholder="Autor"
+                optionLabel="nombre"
+              ></p-dropdown>
+              <div
+                *ngIf="isValidField('autor')">
+                <p style="color: red">Campo
+                  requerido</p>
+              </div>
+            </div>
+            <!-- INPUT TEMA -->
+            <div>
+              <p-dropdown
+                [options]="temas"
+                formControlName="tema"
+                optionLabel="nombre"
+                placeholder="Tema"
+              ></p-dropdown>
+              <div
+                *ngIf="isValidField('tema')">
+                <p style="color: red">Campo
+                  requerido</p>
+              </div>
+            </div>
+            <!-- INPUT EDICION -->
+            <div>
+              <p-dropdown
+                [options]="ediciones"
+                formControlName="edicion"
+                optionLabel="nombre"
+                placeholder="Edición"
+              ></p-dropdown>
+              <div
+                *ngIf="isValidField('edicion')">
+                <p style="color: red">Campo
+                  requerido</p>
+              </div>
+            </div>
+            <!-- INPUT FORMATO -->
+            <div>
+              <p-dropdown
+                [options]="formatos"
+                formControlName="formato"
+                optionLabel="nombre"
+                placeholder="Formato"
+              ></p-dropdown>
+              <div
+                *ngIf="isValidField('formato')">
+                <p style="color: red">Campo
+                  requerido</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p_input_group">
+          <input
+            type="text"
+            pInputText
+            placeholder="Imagen"
+            formControlName="imgName"
+            (input)="updateImage($event)">
+        </div>
+
+      </form>
+      <div class="btn__form">
+        <button
+          *ngIf="!modification"
+          [disabled]="!libroFormulario.valid"
+          pButton
+          (click)="saveBook()"
+          type="button"
+          class="p-button-success"
+          label="Guardar libro"
+          [routerLink]="['/main/libros']"
+        ></button>
+        <button
+          *ngIf="modification"
+          [disabled]="!libroFormulario.valid"
+          pButton
+          (click)="updateBook()"
+          type="button"
+          class="p-button-warning"
+          label="Modificar libro"
+          [routerLink]="['/main/libros']"
+        ></button>
+      </div>
+    </div>
+    <div class="img__container">
+      <img [src]="displayedImage" alt="IMG" class="img__preview">
+      <div class="form-group">
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

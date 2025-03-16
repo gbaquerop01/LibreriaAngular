@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="form-container">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <h2>User Information</h2>
+
+      <!-- Username and Email (Read-Only) -->
+      <div class="p_input_group">
+        <label for="username">Usuario:</label>
+        <input id="username" type="text" [value]="currentUser?.username" readonly />
+      </div>
+
+      <div class="p_input_group">
+        <label for="email">Email:</label>
+        <input id="email" type="email" [value]="currentUser?.email" readonly />
+      </div>
+
+      <!-- Address Fields -->
+      <div class="p_input_group">
+        <label for="direccion">Direccion:</label>
+        <input id="direccion" formControlName="direccion" />
+      </div>
+
+      <div class="p_input_group">
+        <label for="planta">Planta:</label>
+        <input id="planta" formControlName="planta" />
+      </div>
+
+      <div class="p_input_group">
+        <label for="puerta">Puerta:</label>
+        <input id="puerta" formControlName="puerta" />
+      </div>
+
+      <div class="p_input_group">
+        <label for="ciudad">Ciudad:</label>
+        <input id="ciudad" formControlName="ciudad" />
+      </div>
+
+      <!-- Error Messages -->
+      <div *ngIf="userForm.invalid" class="error-message">
+        <p>Rellena los campos correctamente.</p>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="btn__form">
+        <button type="submit" [disabled]="userForm.invalid">Actualizar Informacion</button>
+      </div>
+      <div class="btn__form">
+        <button type="button" (click)="goToMainPage()">Ir a Pagina Principal</button>
+      </div>
+    </form>
+  </div>
+</div>

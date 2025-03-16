@@ -1,0 +1,35 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+  <app-barra-cierre></app-barra-cierre>
+  <div class="container__autores">
+    <div class="card__autor" *ngFor="let autor of autores">
+      <span class="autor__name">
+        {{ autor.nombre }}
+      </span>
+      <div>
+        <button
+          pButton
+          style="background-color: red"
+          icon="pi pi-times"
+          class="btn__recurso"
+        (click)="deleteAutor(autor)"></button>
+        <button
+          pButton
+          style="background-color: yellow"
+          icon="pi pi-pencil"
+          class="btn__recurso"
+          (click)="updateAutor(autor)"></button>
+      </div>
+    </div>
+    <div class="card__autor">
+      <div class="añadir__autor">
+        <input type="text" placeholder="Introducir un nuevo autor!" class="input__añadir__autor" [(ngModel)]="nuevoAutor">
+        <button
+          pButton
+          style="background-color: green"
+          icon="pi pi-plus"
+          class="btn__recurso"
+          (click)="saveAutor()"></button>
+      </div>
+    </div>
+  </div>
+</div>

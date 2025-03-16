@@ -1,0 +1,57 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+
+  <app-barra-cierre></app-barra-cierre>
+  <div class="container">
+    <br>
+    <div class="card_v" *ngFor="let libro of librosArray" (click)="getLibroData(libro)">
+      <p-card>
+        <ng-template pTemplate="header">
+          <img [src]="getPortada(libro)" class="portada">
+          <br>
+          <span style="font-weight: bold">
+            {{ libro.nombre|uppercase }}
+          </span>
+        </ng-template>
+
+        console.log(libro);
+        <p>ISBN: {{ libro.ISBN }}</p>
+        <p>AUTOR: {{ libro.autor.nombre }}</p>
+        <p>EDICION: {{ libro.edicion.nombre }}</p>
+        <p>FORMATO: {{ libro.formato.nombre }}</p>
+        <p>TEMA: {{ libro.tema.nombre }}</p>
+        <p>PRECIO: {{ libro.precio }}</p>
+        <p>Cantidad: {{ libro.cantidad }}</p>
+        <ng-template pTemplate="footer">
+          <button pButton [routerLink]="['/main/nuevo-libro']"
+                  icon="pi pi-pencil"
+                  class="p-button-warning"
+                  [disabled]="!checkForLibroSelected(libro)"></button>
+
+          <button pButton
+                  icon="pi pi-times"
+                  class="p-button-danger"
+                  [disabled]="!checkForLibroSelected(libro)"
+                  (click)="confirmDelete(libro)"></button>
+
+          <button pButton
+                  icon="pi pi-cart-plus"
+                  [disabled]="checkForLibroInCarrito(libro)"
+                  (click)="saveLibroInCarrito(libro)"></button>
+
+          <button pButton
+                  icon="pi pi-cart-minus"
+                  [disabled]="!checkForLibroInCarrito(libro)"
+                  (click)="deleteLibroInCarrito(libro)"></button>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+  <div class="position__btn__nuevolibro">
+    <button pButton
+            label="Nuevo Libro"
+            icon="pi pi-plus"
+            class="p-button-success"
+            (click)="nuevoLibro()"></button>
+  </div>
+
+</div>

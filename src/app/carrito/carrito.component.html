@@ -1,0 +1,40 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+  <div class="libros_container">
+    <div class="card_v" *ngFor="let libro of cachedLibros">
+      <img [src]="getPortada(libro)" class="portada"/>
+      <br/>
+      <div>
+        <span style="font-weight: bold">{{ libro.nombre | uppercase }}</span>
+        <p>ISBN: {{ libro.ISBN }}</p>
+        <p>PRECIO: {{ libro.precio | currency: 'EUR' }}</p>
+        <div>
+          <div class="cantidad">
+            <button pButton icon="pi pi-minus" (click)="decrementarCantidad(libro)"></button>
+            <p>{{ leerCantidadLibroCarrito(libro) }}</p>
+            <button pButton icon="pi pi-plus" (click)="incrementarCantidad(libro)"></button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button pButton
+                icon="pi pi-trash"
+                (click)="deleteLibroInCarrito(libro)"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Totales -->
+  <div class="totales_container">
+    <p><strong>Unidades Totales:</strong> {{ getTotalUnidades() }}</p>
+    <p style="font-weight: bold"><strong>Precio Total:</strong> {{ getTotalPrecio() | currency: 'EUR' }}</p>
+  </div>
+
+  <!-- Botón de compra -->
+  <div>
+    <button pButton
+            label="Comprar"
+            icon="pi pi-shopping-cart"
+            class="p-button-success"
+            (click)="comprar()"></button>
+  </div>
+</div>

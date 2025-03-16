@@ -1,0 +1,33 @@
+<div class="dock-window">
+  <app-bread-crumb></app-bread-crumb>
+  <div class="toolbar">
+    <button pButton (click)="isLoginOrRegisterPage ? goToMainPage() : goToLogin()"
+            [label]="isLoginOrRegisterPage ? 'Ir a Pagina Principal' : (isLoggedIn ? 'Cerrar Sesión (' + loggedInUser + ')' : 'Iniciar Sesión')"
+            icon="pi pi-user"
+            class="p-button-danger"></button>
+
+    <button *ngIf="isLoggedIn" pButton (click)="goToUserInfoPage()"
+            label="Mi Información"
+            icon="pi pi-user-edit"
+            class="p-button-secondary"></button>
+
+    <button *ngIf="isLoggedIn" pButton (click)="toggleSidebar()"
+            label="Carrito"
+            icon="pi pi-cart-arrow-down"
+            class="p-button-secondary"
+            style="background-color: lightgreen"></button>
+
+    <div *ngIf="displaySidebar">
+      <p-sidebar [(visible)]="displaySidebar" position="right" [baseZIndex]="10000" [modal]="false">
+        <app-carrito></app-carrito>
+      </p-sidebar>
+    </div>
+  </div>
+
+  <div class="container-card">
+    <router-outlet></router-outlet>
+  </div>
+
+
+  <app-barra-navegacion></app-barra-navegacion>
+</div>
