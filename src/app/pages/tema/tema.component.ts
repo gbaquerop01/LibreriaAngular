@@ -21,7 +21,9 @@ export class TemaComponent {
   ngOnInit(): void {
     this.temasService.getTemas().subscribe(temas => {
       this.temas = temas
+      console.log(this.temas)
     })
+
   }
 
   saveTema() {

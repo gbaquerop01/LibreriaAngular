@@ -13,7 +13,6 @@
           </span>
         </ng-template>
 
-        console.log(libro);
         <p>ISBN: {{ libro.ISBN }}</p>
         <p>AUTOR: {{ libro.autor.nombre }}</p>
         <p>EDICION: {{ libro.edicion.nombre }}</p>
@@ -37,11 +36,6 @@
                   icon="pi pi-cart-plus"
                   [disabled]="checkForLibroInCarrito(libro)"
                   (click)="saveLibroInCarrito(libro)"></button>
-
-          <button pButton
-                  icon="pi pi-cart-minus"
-                  [disabled]="!checkForLibroInCarrito(libro)"
-                  (click)="deleteLibroInCarrito(libro)"></button>
         </ng-template>
       </p-card>
     </div>

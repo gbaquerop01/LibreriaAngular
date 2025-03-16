@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Libro} from '../core/models/Libro';
+import {CarritoService} from '../services/carrito.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-carrito',
@@ -12,7 +14,9 @@ export class CarritoComponent implements OnInit {
   libros: Libro[] = [];
   cachedLibros: Libro[] = [];
 
-  constructor() {}
+  constructor(private carritoService: CarritoService,
+              private authService: AuthService) {
+  }
 
   ngOnInit(): void {
     this.libros = JSON.parse(localStorage.getItem('carrito') || '[]');
@@ -46,7 +50,8 @@ export class CarritoComponent implements OnInit {
   }
 
   comprar() {
-
+    console.log("Cmprando")
+    this.carritoService.createFactura(this.cachedLibros, this.authService.getLoggedInUser(), this.getTotalPrecio());
   }
 
   getTotalUnidades(): number {
