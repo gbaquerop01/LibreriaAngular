@@ -24,23 +24,27 @@
           <button pButton [routerLink]="['/main/nuevo-libro']"
                   icon="pi pi-pencil"
                   class="p-button-warning"
-                  [disabled]="!checkForLibroSelected(libro)"></button>
+                  [disabled]="!checkForLibroSelected(libro)"
+                  *ngIf="isAdmin"></button>
 
           <button pButton
                   icon="pi pi-times"
                   class="p-button-danger"
                   [disabled]="!checkForLibroSelected(libro)"
-                  (click)="confirmDelete(libro)"></button>
+                  (click)="confirmDelete(libro)"
+          *ngIf="isAdmin"></button>
 
           <button pButton
                   icon="pi pi-cart-plus"
-                  [disabled]="checkForLibroInCarrito(libro)"
-                  (click)="saveLibroInCarrito(libro)"></button>
+                  [disabled]="checkLibroQuantity(libro)"
+                  (click)="saveLibroInCarrito(libro)"
+                  *ngIf="isLoggedIn"
+          ></button>
         </ng-template>
       </p-card>
     </div>
   </div>
-  <div class="position__btn__nuevolibro">
+  <div class="position__btn__nuevolibro" *ngIf="isAdmin">
     <button pButton
             label="Nuevo Libro"
             icon="pi pi-plus"

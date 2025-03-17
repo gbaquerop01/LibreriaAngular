@@ -11,15 +11,17 @@
           style="background-color: red"
           icon="pi pi-times"
           class="btn__recurso"
-          (click)="deleteTema(tema)"></button>
+          (click)="deleteTema(tema)"
+        *ngIf="isAdmin()"></button>
         <button
           pButton
           style="background-color: yellow"
           icon="pi pi-pencil"
-          class="btn__recurso"></button>
+          class="btn__recurso"
+          *ngIf="isAdmin()"></button>
       </div>
     </div>
-    <div class="card__tema">
+    <div class="card__tema" *ngIf="isAdmin()">
       <div class="añadir__tema">
         <input type="text" placeholder="Introducir un nuevo tema!" class="input__añadir__tema" [(ngModel)]="nuevoTema">
         <button

@@ -92,4 +92,9 @@ export class CarritoComponent implements OnInit {
       localStorage.setItem('carrito', JSON.stringify(this.libros));
     }
   }
+
+  reloadCarrito(): void {
+    this.cachedLibros = JSON.parse(localStorage.getItem('carrito') || '[]');
+  }
+
 }

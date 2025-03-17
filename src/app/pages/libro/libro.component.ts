@@ -94,26 +94,12 @@ export class LibroComponent implements OnInit {
 
   saveLibroInCarrito(libro: Libro) {
     const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
-    if (this.checkForLibroInCarrito(libro)) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Este libro ya esta en tu carrito!'
-      });
-      return;
-    }
     carrito.push(libro);
     localStorage.setItem('carrito', JSON.stringify(carrito));
   }
 
-  deleteLibroInCarrito(libro: Libro) {
+  checkLibroQuantity(libro: Libro) {
     const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
-    for (let i = 0; i < carrito.length; i++) {
-      if (carrito[i].nombre == libro.nombre) {
-        carrito.splice(i, 1);
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        return;
-      }
-    }
+    return carrito.filter((item: { id: number; }) => item.id === libro.id).length >= libro.cantidad;
   }
 }

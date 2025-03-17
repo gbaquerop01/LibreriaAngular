@@ -3,6 +3,7 @@ import {Recurso} from '../../core/models/Recurso';
 import {AutoresService} from '../../services/autores.service';
 import {TemasService} from '../../services/temas.service';
 import Swal from 'sweetalert2';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-tema',
@@ -15,7 +16,7 @@ export class TemaComponent {
   temas: Recurso[] = []
   nuevoTema: string = "";
 
-  constructor(private temasService: TemasService) {
+  constructor(private temasService: TemasService, private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -51,5 +52,9 @@ export class TemaComponent {
         });
       }
     });
+  }
+
+  isAdmin() {
+    return this.authService.isAdmin()
   }
 }

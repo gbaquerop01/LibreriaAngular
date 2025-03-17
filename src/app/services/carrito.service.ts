@@ -13,7 +13,7 @@ export class CarritoService {
   }
 
 
-  createFactura(cachedLibros: Libro[], loggedInUser: string | null, totalPrecio: number) {
+  public createFactura(cachedLibros: Libro[], loggedInUser: string | null, totalPrecio: number) {
     const facturaBody = {
       libros: cachedLibros,
       usuario: loggedInUser,
@@ -22,7 +22,8 @@ export class CarritoService {
 
     const body = JSON.stringify(facturaBody);
     console.log(body);
-    console.log(this.httpClient.post<boolean>(`${this.baseURL}/api/facturas`, body, {headers: this.options}));
+    console.log("Haciendo post");
+    return this.httpClient.post<boolean>(`${this.baseURL}/api/facturas`, body, {headers: this.options});
 
   }
 }

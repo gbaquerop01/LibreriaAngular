@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Recurso} from '../../core/models/Recurso';
 import {AutoresService} from '../../services/autores.service';
 import Swal from 'sweetalert2';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-autores',
@@ -15,7 +16,7 @@ export class AutoresComponent implements OnInit {
   autores: Recurso[] = []
   nuevoAutor: string = "";
 
-  constructor(private autoresService: AutoresService) {
+  constructor(private autoresService: AutoresService, private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -81,4 +82,8 @@ export class AutoresComponent implements OnInit {
     }
   });
 }
+
+  isAdmin() {
+    return this.authService.isAdmin();
+  }
 }
